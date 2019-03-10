@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <head>
+        <title>diplomski Predrag Popov</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" type="text/css" href="mystyle.css"/>
+    </head>
+    <div class="heder">
+            <h:form >
+                
+                <h:outputText  value="REFERENT FIRME #{logIN.firma.naziv}: #{logIN.korisnik.username}"/>
+                <br/><br/>
+                <h:commandButton class="meniButton" action="#{sifarnici.ucitaj()}" value="SIFARNICI"/>
+                <h:commandButton class="meniButton" action="moja_firma.xhtml" value="MOJA FIRMA"/>
+                <h:commandButton class="meniButton" action="#{ucitaj_periode.ucitaj()}" value="PERIODI"/>
+                <h:commandButton class="meniButton" action="promena_lozinke.xhtml" value="PROMENA LOZINKE"/>
+                <h:commandButton class="meniButton" action="novi_korisnik.xhtml" value="NOVI KORISNIK"/>
+                <h:commandButton class="meniButton" action="#{logIN.odjavi_se()}" value="LOG OUT"/>
+            </h:form>
+        </div>
+    <div class="sadrzaj">
+        <h3>OBRASCI</h3>
+        <hr/>
+        <br/><br/>
+        <h5>OBRAZAC 1</h5>
+        
+               
+                
+                
+                <h:dataTable class="tabela" value="#{obrasci.obr1}" var="obr1">
+                    <h:column>
+                        <f:facet name="header">REDNI BROJ</f:facet>
+                        #{obr1.ID}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">PRIKAZ</f:facet>
+                        <h:form>
+                    
+                            <h:commandButton class="formButton" value="Prikaži" action="obrazac_1_view.xhtml" /> 
+                        </h:form>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">OBRISI</f:facet>
+                        <h:form>
+                            <h:commandButton class="formButton" action="#{obrasci.delite_obr1()}" value="Obriši"/> 
+                        </h:form>
+                    </h:column>
+                </h:dataTable>
+                <br/><br/>
+           <h:form>
+               <h:commandButton class="newItemButton" action="obrazac_1_new.xhtml" value="NAPRAVI NOVI" rendered="#{!obrasci.postoji_obr1()}"/> 
+            </h:form>     
+        
+        <br/><br/>
+        
+        <h5>OBRAZAC 2</h5>
+        <h:dataTable class="tabela" value="#{obrasci.lista_obr2}" var="obr2">
+            <h:column>
+                <f:facet name="header">REDNI BROJ</f:facet>
+                #{obr2.ID}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Prikaz:</f:facet>
+                <h:form>
+                    
+                    <h:commandButton class="formButton" value="Prikaži" action="#{obrasci.prikazi_obr_2(obr2.ID)}" /> 
+                </h:form>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Obrisi:</f:facet>
+                <h:form>
+                    
+                    <h:commandButton class="formButton" value="Obriši" action="#{obrasci.delite_obr2(obr2.ID)}" /> 
+                </h:form>
+            </h:column>
+        </h:dataTable>
+        <br/>
+        <h:form>
+                <h:commandButton class="newItemButton" action="obrazac_2_new.xhtml" value="NAPRAVI NOVI"/> 
+            </h:form>
+         
+         <hr/>
+         <br/><br/>
+         <h5>OBRAZAC 3</h5>
+         <h:dataTable class="tabela" value="#{obrasci.lista_obr3}" var="obr3">
+            <h:column>
+                <f:facet name="header">REDNI BROJ</f:facet>
+                #{obr3.ID}
+            </h:column>
+             <h:column>
+                <f:facet name="header">PRIKAZ</f:facet>
+                <h:form>
+                    
+                    <h:commandButton class="formButton" value="Prikaži" action="#{obrasci.prikazi_obr_3(obr3.ID)}" /> 
+                </h:form>
+            </h:column>
+            <h:column>
+                <f:facet name="header">OBRIŠI</f:facet>
+                <h:form>
+                    
+                    <h:commandButton class="formButton" value="Obriši" action="#{obrasci.delete_obr_3(obr3.ID)}" /> 
+                </h:form>
+            </h:column>
+         
+         
+         </h:dataTable>
+         <br/>
+         <h:form>
+                <h:commandButton class="newItemButton" action="obrazac_3_new.xhtml" value="NAPRAVI NOVI"/> 
+            </h:form>
+         
+         <hr/>
+         <br/><br/>
+         <h5>OBRAZAC 4</h5>
+         <h:dataTable class="tabela" value="#{obrasci.lista_obr4}" var="obr4">
+            <h:column>
+                <f:facet name="header">REDNI BROJ:</f:facet>
+                #{obr4.ID}
+            </h:column>
+             <h:column>
+                <f:facet name="header">PRIKAZ</f:facet>
+                <h:form>
+                    
+                    <h:commandButton class="formButton" value="Prikaži" action="#{obrasci.prikazi_obr_4(obr4.ID)}" /> 
+                </h:form>
+            </h:column>
+            <h:column>
+                <f:facet name="header">OBRIŠI</f:facet>
+                <h:form>
+                    
+                    <h:commandButton class="formButton" value="Obriši" action="#{obrasci.delete_obr_4(obr4.ID)}" /> 
+                </h:form>
+            </h:column>
+         
+         
+         </h:dataTable>
+         <br/>
+         <h:form>
+                <h:commandButton class="newItemButton" action="obrazac_4_new.xhtml" value="NAPRAVI NOVI"/> 
+            </h:form>
+         
+         <hr/>
+         <br/><br/>
+         
+        <h5>OBRAZAC 5</h5>
+         <h:dataTable class="tabela" value="#{obrasci.lista_obr5}" var="obr5">
+            <h:column>
+                <f:facet name="header">REDNI BROJ</f:facet>
+                #{obr5.ID}
+            </h:column>
+             <h:column>
+                <f:facet name="header">PRIKAZ</f:facet>
+                <h:form>
+                    
+                    <h:commandButton class="formButton" value="Prikaži" action="#{obrasci.prikazi_obr_5(obr5.ID)}" /> 
+                </h:form>
+            </h:column>
+            <h:column>
+                <f:facet name="header">OBRIŠI</f:facet>
+                <h:form>
+                    
+                    <h:commandButton class="formButton" value="Obriši" action="#{obrasci.delete_obr_5(obr5.ID)}" /> 
+                </h:form>
+            </h:column>
+         
+         
+         </h:dataTable>
+        <br/>
+        <h:form>
+                <h:commandButton class="newItemButton" action="obrazac_5_new.xhtml" value="NAPRAVI NOVI"/> 
+            </h:form>
+         
+         <hr/>
+    </div>
+    <div class="futer">
+            <div class="by">by Predrag Popov</div>
+            <div class="mentor">mentor dr Boško Nikolić</div>
+        </div>
+</html>

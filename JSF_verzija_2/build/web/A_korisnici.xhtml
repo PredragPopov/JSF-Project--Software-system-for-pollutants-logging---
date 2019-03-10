@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <head>
+        <title>diplomski Predrag Popov</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" type="text/css" href="mystyle.css"/>
+    </head>
+    <body>
+        <div class="heder">
+           <h:form>
+                <h:outputText  value="ADMINISTRATOR : #{logIN.korisnik.username}"/>
+                <br/><br/>
+                <h:commandButton class="startButton2" action="#{a_korisnici.ucitaj_korisnike()}" value="PREGLED KORISNIKA"/>
+                <h:commandButton class="startButton2" action="#{a_firme.ucitaj()}" value="PREGLED FIRMI"/>
+                <h:commandButton class="startButton2" action="promena_lozinke.xhtml" value="PROMENA LOZINKE"/>
+                <h:commandButton class="startButton2" action="#{logIN.odjavi_se()}" value="LOG OUT"/>
+                
+            </h:form>
+            
+        </div>
+        <div class="sadrzaj">
+        
+            <h3>SPISAK KORISNIKA:</h3>
+            
+            <div class="pretraga">
+                
+                <h:form>
+                    <h:outputLabel class="labela">Username: </h:outputLabel>
+                    <h:inputText class="txtPolje" id="username" value="#{a_korisnici.username}"/>
+                    <h:commandButton class="btnPretraga" action="#{a_korisnici.pretraga(1)}" value="PRETRAŽI"/>
+                </h:form>
+                <h:form>
+                    <h:outputLabel class="labela">Tip korisnika: </h:outputLabel>
+                    <h:inputText class="txtPolje" id="username" value="#{a_korisnici.tip}"/>
+                    <h:commandButton class="btnPretraga" action="#{a_korisnici.pretraga(2)}" value="PRETRAŽI"/>
+                </h:form>
+                <h:form>
+                    <h:outputLabel class="labela">PIB firme: </h:outputLabel>
+                    <h:inputText class="txtPolje" id="username" value="#{a_korisnici.firma}"/>
+                    <h:commandButton class="btnPretraga" action="#{a_korisnici.pretraga(3)}" value="PRETRAŽI"/>
+                </h:form>
+                <br/>
+            </div>
+            
+            <h:dataTable class="tabela" value="#{a_korisnici.lista}" var="korisnik">
+         
+         <h:column>    				
+            <f:facet name="header">Username:</f:facet>
+            <h:outputText class="txtPolje" id="username" value="#{korisnik.username}"/>    
+            
+         </h:column>
+         <h:column>
+            <f:facet name="header">Tip korisnika:</f:facet>
+            <h:outputText class="txtPolje" id="tip_korisnika" value="#{korisnik.tip_korisnika}"/>
+            
+         </h:column>
+         <h:column>
+            <f:facet name="header">PIB firme:</f:facet>
+            <h:outputText class="txtPolje" id="PIB" value="#{korisnik.firma}"/>
+            
+         </h:column>
+         <h:column>
+            <f:facet name="header">Arhiviran:</f:facet>
+            <h:outputText value="arhiviran" rendered="#{korisnik.arhiviran}"/>
+            <h:outputText value="nije arhiviran" rendered="#{!korisnik.arhiviran}"/>
+         </h:column>
+         <h:column>
+            <f:facet name="header">Obriši:</f:facet>
+            <h:form>
+                <h:commandButton class="formButton" action="#{a_korisnici.obrisi_korisnika(korisnik.username)}" value="OBRIŠI" />
+            </h:form>
+            
+         </h:column>
+         <h:column>
+            <f:facet name="header">Resetuj lozinku:</f:facet>
+            <h:form>
+                <h:commandButton class="formButton" action="#{a_korisnici.resetuj_lozniku(korisnik.username)}" value="RESETUJ" />
+            </h:form>
+            
+         </h:column>
+      </h:dataTable>
+            <br/><br/>
+            <h:form class="forma">
+                <br/>
+                <h:outputLabel class="labela3">Unesite eMail novog korisnika koji ce koristiti kao "username": </h:outputLabel>
+                <h:inputText class="txtPolje" id="username" value="#{a_korisnici.novi_korisnik.username}" required="true"/>
+                <br/>
+                <h:outputLabel class="labela3">Unesite tip_korisnika: </h:outputLabel>
+                <h:inputText class="txtPolje" id="tip_korisnika" value="#{a_korisnici.novi_korisnik.tip_korisnika}" required="true"/>
+                <br/>
+                <h:outputLabel class="labela3">Unesite PIB firme: </h:outputLabel>
+                <h:inputText class="txtPolje" id="firma" value="#{a_korisnici.novi_korisnik.firma}"/>
+                <br/>
+                
+                <h:commandButton class="btnDNK" value="Provera firme">
+                    <f:ajax execute="firma" render="podaci_firme" />
+                </h:commandButton><br/>
+                
+                <h:outputText class="labela" id="podaci_firme" value="#{a_korisnici.podaci_firme()}" /><br/>
+                <br/>
+                <h:commandButton class="btnDNK" action="#{a_korisnici.napravi_novog()}" value="Napravi novog korisnika"/>
+            </h:form>
+            
+            
+        </div>
+        <div class="futer">
+            <div class="by">by Predrag Popov</div>
+            <div class="mentor">mentor dr Boško Nikolić</div>
+        </div>
+    </body>
+</html>

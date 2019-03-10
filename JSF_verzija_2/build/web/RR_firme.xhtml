@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <head>
+        <title>diplomski Predrag Popov</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" type="text/css" href="mystyle.css"/>
+        <style type="text/css">
+            .tabelaF,th,td{
+                width: 100%;
+                //border: 2px solid blue;
+                border-collapse: collapse;
+                //border-spacing: 5px;
+                text-align: center;
+                color: rgb(0, 45, 122);
+                
+            }
+            th,td{
+                padding: 5px;
+            }
+            
+        </style>
+    </head>
+    <body>
+        <div class="heder">
+            <h:form>
+                <h:outputText  value="REFERENT REGISTRA : #{logIN.korisnik.username}"/>
+                <br/><br/>
+                <h:commandButton class="startButton2" action="#{sifarnici.ucitaj()}" value="ŠIFARNICI"/>
+                <h:commandButton class="startButton2" action="#{ucitaj_korisnike.ucitaj_korisnike()}" value="KORISNICI"/>
+                <h:commandButton class="startButton2" action="#{ucitaj_firme.ucitaj()}" value="FIRME"/>
+                <h:commandButton class="startButton2" action="#{periodi.ucitaj()}" value="PERIODI"/>
+                <h:commandButton class="startButton2" action="promena_lozinke.xhtml" value="PROMENA LOZINKE"/>
+                <h:commandButton class="startButton2" action="#{logIN.odjavi_se()}" value="LOG OUT"/>
+            </h:form>
+        </div>
+        <div class="sadrzaj">
+        
+            <h3>SPISAK FIRMI:</h3>
+            
+            <div class="pretraga">
+                <h3>PRETRAGA</h3>
+                <h:form class="forma">
+                    <h:outputLabel class="labela" >PIB firme: </h:outputLabel>
+                    <h:inputText class="txtPolje" id="username" value="#{ucitaj_firme.pib}"/>
+                    <h:commandButton class="btnPretraga" action="#{ucitaj_firme.pretraga(1)}" value="PRETRAŽI"/>
+                </h:form>
+                <br/>
+                <h:form class="forma">
+                    <h:outputLabel class="labela" >Naziv: </h:outputLabel>
+                    <h:inputText class="txtPolje" id="username" value="#{ucitaj_firme.naziv}"/>
+                    <h:commandButton class="btnPretraga" action="#{ucitaj_firme.pretraga(2)}" value="PRETRAŽI"/>
+                </h:form>
+                <br/>
+                <h:form class="forma">
+                    <h:outputLabel class="labela" >Mesto: </h:outputLabel>
+                    <h:inputText class="txtPolje" id="username" value="#{ucitaj_firme.mesto}"/>
+                    <h:commandButton class="btnPretraga" action="#{ucitaj_firme.pretraga(3)}" value="PRETRAŽI"/>
+                </h:form>
+                <br/><br/>
+            </div>
+            
+        
+            <h:dataTable class="tabelaF" value="#{ucitaj_firme.lista}" var="firma">
+         
+                <h:column class="kolonaF">    				
+                    <f:facet name="header">PIB</f:facet>    				
+                    #{firma.PIB}
+                </h:column>
+                <h:column class="kolonaF">    				
+                    <f:facet name="header">Maticni broj:</f:facet>    				
+                    #{firma.maticni_broj}
+                </h:column>
+                <h:column class="kolonaF">    				
+                    <f:facet name="header">Naziv:</f:facet>    				
+                    #{firma.naziv}
+                </h:column>
+                <h:column class="kolonaF">    				
+                    <f:facet name="header">Delatnost:</f:facet>    				
+                    #{firma.delatnost}
+                </h:column>
+                <h:column class="kolonaF">    				
+                    <f:facet name="header">Šifra delatnosti:</f:facet>    				
+                    #{firma.sifra_delatnosti}
+                </h:column>
+                <h:column class="kolonaF">    				
+                    <f:facet name="header">Mesto:</f:facet>    				
+                    #{firma.mesto}
+                </h:column>
+                <h:column>    				
+                    <f:facet name="header">Šifra mesta:</f:facet>    				
+                    #{firma.sifra_mesta}
+                </h:column>
+                <h:column>    				
+                    <f:facet name="header">Poštanski broj:</f:facet>    				
+                    #{firma.postanski_broj}
+                </h:column>
+                <h:column>    				
+                    <f:facet name="header">Ulica i broj:</f:facet>    				
+                    #{firma.ulica_broj}
+                </h:column>
+                <h:column>    				
+                    <f:facet name="header">Telefon:</f:facet>    				
+                    #{firma.telefon}
+                </h:column>
+                <h:column>    				
+                    <f:facet name="header">ePošta:</f:facet>    				
+                    #{firma.email}
+                </h:column>
+                <h:column>    				
+                    <f:facet name="header">Opština:</f:facet>    				
+                    #{firma.opstina}
+                </h:column>
+                <h:column>    				
+                    <f:facet name="header">Šifra opštine:</f:facet>    				
+                    #{firma.sifra_opstine}
+                </h:column>
+                <h:column>    				
+                    <f:facet name="header">Arhivirano:</f:facet> 
+                    <h:outputText value="arhiviran" rendered="#{firma.arhiviran}"/>
+                    <h:outputText value="nije" rendered="#{!firma.arhiviran}"/>
+                </h:column>
+                <h:column>    				
+                    <f:facet name="header">Arhiviraj / aktiviraj</f:facet> 
+                    <h:form rendered="#{firma.arhiviran}">
+                        <h:commandButton class="formButton" action="#{ucitaj_firme.aktivacija(firma.PIB,1)}" value="AKTIVIRAJ"/>
+                    </h:form>
+                    <h:form rendered="#{!firma.arhiviran}">
+                        <h:commandButton class="formButton" action="#{ucitaj_firme.aktivacija(firma.PIB,2)}" value="ARHIVIRAJ"/>
+                    </h:form>
+                    
+                </h:column>
+                
+            </h:dataTable>
+           
+            
+        </div>
+        <br/><br/>
+        <div class="futer">
+            <div class="by">by Predrag Popov</div>
+            <div class="mentor">mentor dr Boško Nikolić</div>
+        </div>
+    </body>
+</html>

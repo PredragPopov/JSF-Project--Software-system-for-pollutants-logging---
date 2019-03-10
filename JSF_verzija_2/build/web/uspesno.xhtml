@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <head>
+        <title>diplomski Predrag Popov</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" type="text/css" href="mystyle.css"/>
+        <style type="text/css">
+            .futer{
+                margin-top: 500px;
+            }
+        </style>
+    </head>
+    <body>
+         <div class="heder">
+            <h:form rendered="#{logIN.r_firme}">
+                
+                <h:outputText  value="REFERENT FIRME #{logIN.firma.naziv}: #{logIN.korisnik.username}"/>
+                <br/><br/>
+                <h:commandButton class="meniButton" action="#{sifarnici.ucitaj()}" value="SIFARNICI"/>
+                <h:commandButton class="meniButton" action="moja_firma.xhtml" value="MOJA FIRMA"/>
+                <h:commandButton class="meniButton" action="#{ucitaj_periode.ucitaj()}" value="PERIODI"/>
+                <h:commandButton class="meniButton" action="promena_lozinke.xhtml" value="PROMENA LOZINKE"/>
+                <h:commandButton class="meniButton" action="novi_korisnik.xhtml" value="NOVI KORISNIK"/>
+                <h:commandButton class="meniButton" action="#{logIN.odjavi_se()}" value="LOG OUT"/>
+            </h:form>
+            
+            <h:form rendered="#{!logIN.r_firme}">
+                <h:outputText  value="REFERENT REGISTRA : #{logIN.korisnik.username}"/>
+                <br/><br/>
+                <h:commandButton class="meniButton" action="#{sifarnici.ucitaj()}" value="Sifarnici"/>
+                <h:commandButton class="meniButton" action="#{ucitaj_korisnike.ucitaj_korisnike()}" value="Pregled korisnika"/>
+                <h:commandButton class="meniButton" action="#{ucitaj_firme.ucitaj()}" value="Pregled firmi"/>
+                <h:commandButton class="meniButton" action="#{periodi.ucitaj()}" value="Pregled perioda"/>
+                <h:commandButton class="meniButton" action="promena_lozinke.xhtml" value="promena lozinke"/>
+                <h:commandButton class="meniButton" action="#{logIN.odjavi_se()}" value="Odjavi se"/>
+            </h:form>
+            
+           
+        </div>
+        <div class="sadrzaj">
+            
+        <h2>USPESNO STE DODALI NOVOG KORISNIKA U SISTEM</h2>
+        <h:form rendered="#{logIN.r_firme}">
+            <h:outputLabel class="labela" for="username">Korisničko ime: </h:outputLabel>
+            <h:inputText class="txtPolje" id="username" value="#{novi_korisnik.username}"/>
+            <br/>
+            <h:outputLabel class="labela" for="username">Slučajno generisana lozinka: </h:outputLabel>
+            <h:inputText class="txtPolje" id="username" value="#{novi_korisnik.password}"/>
+            <br/><br/>
+            <h:commandButton class="startButton" action="referent_firme.xhtml" value="POČETNA"/>
+                
+        </h:form>
+        <h:form rendered="#{!logIN.r_firme}">
+            <h:outputLabel class="labela" for="username">Korisničko ime: </h:outputLabel>
+            <h:inputText class="txtPolje" id="username" value="#{novi_korisnik.username}"/>
+            <br/>
+            <h:outputLabel class="labela" for="username">Slučajno generisana lozinka: </h:outputLabel>
+            <h:inputText class="txtPolje" id="username" value="#{novi_korisnik.password}"/>
+            <br/><br/>
+            <h:commandButton class="startButton" action="referent_registra.xhtml" value="POČETNA"/>
+                
+        </h:form>
+        
+        
+            
+        
+        </div>
+        <div class="futer">
+            <div class="by">by Predrag Popov</div>
+            <div class="mentor">mentor dr Boško Nikolić</div>
+        </div>
+    </body>
+</html>

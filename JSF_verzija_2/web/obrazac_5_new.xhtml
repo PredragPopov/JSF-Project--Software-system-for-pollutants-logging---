@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <head>
+        <title>diplomski Predrag Popov</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" type="text/css" href="mystyle.css"/>
+    </head>
+    <body>
+        <div class="heder">
+            <h:form >
+                
+                <h:outputText  value="REFERENT FIRME #{logIN.firma.naziv}: #{logIN.korisnik.username}"/>
+                <br/><br/>
+                <h:commandButton class="meniButton" action="#{sifarnici.ucitaj()}" value="SIFARNICI"/>
+                <h:commandButton class="meniButton" action="moja_firma.xhtml" value="MOJA FIRMA"/>
+                <h:commandButton class="meniButton" action="#{ucitaj_periode.ucitaj()}" value="PERIODI"/>
+                <h:commandButton class="meniButton" action="promena_lozinke.xhtml" value="PROMENA LOZINKE"/>
+                <h:commandButton class="meniButton" action="novi_korisnik.xhtml" value="NOVI KORISNIK"/>
+                <h:commandButton class="meniButton" action="#{logIN.odjavi_se()}" value="LOG OUT"/>
+            </h:form>
+        </div>
+        <div class="sadrzaj">
+        
+            <h3>OBRAZAC 5 - UPRAVLjANjE OTPADOM</h3>
+            <h:form class="forma">
+                <h:outputLabel class="labela2" for="pib">PIB: </h:outputLabel>
+                <h:inputText class="txtPolje" id="pib" value="#{obrasci.PIB}" readonly="true"/>
+                <br/>
+                <h:outputLabel class="labela2" for="period">Period: </h:outputLabel>
+                <h:inputText class="txtPolje" id="period" value="#{obrasci.period}" readonly="true"/>
+                <br/>
+                
+                <h:outputLabel class="labela2" for="mesto_nastanka">Mesto nastanka otpada: </h:outputLabel>
+                <h:inputText class="txtPolje" id="mesto_nastanka" value="#{obrasci.obr5_new.mesto_nastanka}"/>
+                <br/>
+                <h:outputLabel class="labela2" for="naziv">Naziv otpada: </h:outputLabel>
+                <h:inputText class="txtPolje" id="naziv" value="#{obrasci.obr5_new.naziv}"/>
+                <br/>
+                <h:outputLabel class="labela2" for="vrsta">Vrsta otpada: </h:outputLabel>
+                <h:inputText class="txtPolje" id="vrsta" value="#{obrasci.obr5_new.vrsta}"/>
+                <br/>
+                <h:outputLabel class="labela2" for="opis">Opis: </h:outputLabel>
+                <h:inputText class="txtPolje" id="opis" value="#{obrasci.obr5_new.opis}"/>
+                <br/>
+                <h:outputLabel class="labela2" for="kategorija">Kategorija otpada: </h:outputLabel>
+                <h:inputText class="txtPolje" id="kategorija" value="#{obrasci.obr5_new.kategorija}"/>
+                <br/>
+                <h:outputLabel class="labela2" for="karakter">Karakter otpada: </h:outputLabel>
+                <h:inputText class="txtPolje" id="karakter" value="#{obrasci.obr5_new.karakter}"/>
+                <br/>
+                <h:outputLabel class="labela2" for="izvestaj_broj">Broj izveštaja o ispitivanju: </h:outputLabel>
+                <h:inputText class="txtPolje" id="izvestaj_broj" value="#{obrasci.obr5_new.izvestaj_broj}"/>
+                <br/>
+                
+                <h:outputLabel class="labela2" for="izvestaj_datum">Datum izveštaja o ispitivanju: </h:outputLabel>
+                <h:inputText class="txtPolje" id="izvestaj_datum" value="#{obrasci.obr5_new.izvestaj_datum}"/>
+                <br/>
+                
+                <h:outputLabel class="labela2" for="fizicko_stanje">Fizičko stanje otpada: </h:outputLabel>
+                <h:inputText class="txtPolje" id="fizicko_stanje" value="#{obrasci.obr5_new.fizicko_stanje}"/>
+                <br/>
+                <h:outputLabel class="labela2" for="transport">Način transporta: </h:outputLabel>
+                <h:inputText class="txtPolje" id="transport" value="#{obrasci.obr5_new.transport}"/>
+                <br/>
+                <h:outputLabel class="labela2" for="odrediste">Odredište: </h:outputLabel>
+                <h:inputText class="txtPolje" id="odrediste" value="#{obrasci.obr5_new.odrediste}"/>
+                <br/>
+                <h:outputLabel class="labela2" for="napomena">Napomena: </h:outputLabel>
+                <h:inputText class="txtPolje" id="napomena" value="#{obrasci.obr5_new.napomena}"/>
+                <br/>
+                
+                <h:commandButton class="formButton" action="#{obrasci.new_obr5()}" value="ZAPAMTI"/>
+                
+                
+            
+                
+            </h:form>
+            
+        </div>
+        <div class="futer">
+            <div class="by">by Predrag Popov</div>
+            <div class="mentor">mentor dr Boško Nikolić</div>
+        </div>
+    </body>
+</html>

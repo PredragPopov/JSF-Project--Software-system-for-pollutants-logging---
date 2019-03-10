@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <head>
+        <title>diplomski Predrag Popov</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" type="text/css" href="mystyle.css"/>
+    </head>
+    <body>
+        <div class="heder">
+            <h:form >
+                
+                <h:outputText  value="REFERENT FIRME #{logIN.firma.naziv}: #{logIN.korisnik.username}"/>
+                <br/><br/>
+                <h:commandButton class="meniButton" action="#{sifarnici.ucitaj()}" value="SIFARNICI"/>
+                <h:commandButton class="meniButton" action="moja_firma.xhtml" value="MOJA FIRMA"/>
+                <h:commandButton class="meniButton" action="#{ucitaj_periode.ucitaj()}" value="PERIODI"/>
+                <h:commandButton class="meniButton" action="promena_lozinke.xhtml" value="PROMENA LOZINKE"/>
+                <h:commandButton class="meniButton" action="novi_korisnik.xhtml" value="NOVI KORISNIK"/>
+                <h:commandButton class="meniButton" action="#{logIN.odjavi_se()}" value="LOG OUT"/>
+            </h:form>
+        </div>
+        
+        <div class="sadrzaj">
+        <h3>Periodi</h3>
+        <h:dataTable class="tabela" value="#{ucitaj_periode.lista_perioda}" var="period">
+            <h:column>
+                <f:facet name="header">GODINA</f:facet>
+                <h:outputText value="#{period.godina}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">STATUS</f:facet>
+                <h:outputText value="zakljucan" rendered="#{period.zakljucan}"/>
+                <h:outputText value="nije zakljucan" rendered="#{!period.zakljucan}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">OBRASCI</f:facet>
+                <h:form id="myForm">
+                    
+                    <h:commandButton class="formButton" value="PRIKAŽI" action="#{obrasci.ucitaj_obrasce(logIN.firma.PIB, period.godina)}" rendered="#{!period.zakljucan}"/> 
+                </h:form>
+            </h:column>
+        </h:dataTable>
+        </div>
+        <div class="futer">
+            <div class="by">by Predrag Popov</div>
+            <div class="mentor">mentor dr Boško Nikolić</div>
+        </div>
+    </body>
+</html>

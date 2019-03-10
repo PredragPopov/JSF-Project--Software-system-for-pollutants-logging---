@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <head>
+        <title>diplomski Predrag Popov</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" type="text/css" href="mystyle.css"/>
+    </head>
+    <body>
+        <div class="heder">
+            <h:form >
+                
+                <h:outputText  value="REFERENT FIRME #{logIN.firma.naziv}: #{logIN.korisnik.username}"/>
+                <br/><br/>
+                <h:commandButton class="meniButton" action="#{sifarnici.ucitaj()}" value="SIFARNICI"/>
+                <h:commandButton class="meniButton" action="moja_firma.xhtml" value="MOJA FIRMA"/>
+                <h:commandButton class="meniButton" action="#{ucitaj_periode.ucitaj()}" value="PERIODI"/>
+                <h:commandButton class="meniButton" action="promena_lozinke.xhtml" value="PROMENA LOZINKE"/>
+                <h:commandButton class="meniButton" action="novi_korisnik.xhtml" value="NOVI KORISNIK"/>
+                <h:commandButton class="meniButton" action="#{logIN.odjavi_se()}" value="LOG OUT"/>
+            </h:form>
+        </div>
+        
+        <div class="sadrzaj">
+        <h:form class="forma">
+            
+            <h:outputLabel class="labela" for="pib">PIB: </h:outputLabel>
+            <h:inputText class="txtPolje" id="pib" value="#{logIN.firma.PIB}" readonly="true"/>
+            <br/>
+            <h:outputLabel class="labela" for="maticni_broj">Maticni broj: </h:outputLabel>
+            <h:inputText class="txtPolje" id="maticni_broj" value="#{logIN.firma.maticni_broj}" readonly="true"/>
+            <br/>
+            <h:outputLabel class="labela" for="naziv">Naziv: </h:outputLabel>
+            <h:inputText class="txtPolje" id="naziv" value="#{logIN.firma.naziv}" readonly="true"/>
+            <br/>
+            <h:outputLabel class="labela" for="delatnost">Delatnost: </h:outputLabel>
+            <h:inputText class="txtPolje" id="delatnost" value="#{logIN.firma.delatnost}" readonly="true"/>
+            <br/><hr/>
+            
+            <h5>Adresa:</h5>
+            <h:outputLabel class="labela" for="mesto">Mesto: </h:outputLabel>
+            <h:inputText class="txtPolje" id="mesto" value="#{logIN.firma.mesto}"/>
+            <br/>
+            <h:outputLabel class="labela" for="sifra_mesta">Šifra mesta: </h:outputLabel>
+            <h:inputText class="txtPolje" id="sifra_mesta" value="#{logIN.firma.sifra_mesta}"/>
+            <br/>
+            <h:outputLabel class="labela" for="postanski_broj">Poštanski broj: </h:outputLabel>
+            <h:inputText class="txtPolje" id="postanski_broj" value="#{logIN.firma.postanski_broj}"/>
+            <br/>
+            <h:outputLabel class="labela" for="ulica_broj">Ulica i broj: </h:outputLabel>
+            <h:inputText class="txtPolje" id="ulica_broj" value="#{logIN.firma.ulica_broj}"/>
+            <br/>
+            <h:outputLabel class="labela" for="telefon">Telefon: </h:outputLabel>
+            <h:inputText class="txtPolje" id="telefon" value="#{logIN.firma.telefon}"/>
+            <br/>
+            <h:outputLabel class="labela" for="email">ePošta: </h:outputLabel>
+            <h:inputText class="txtPolje" id="email" value="#{logIN.firma.email}"/>
+            <br/><hr/>
+            
+            <h:outputLabel class="labela" for="opstina">Opština: </h:outputLabel>
+            <h:inputText class="txtPolje" id="opstina" value="#{logIN.firma.opstina}"/>
+            <br/>
+            <h:outputLabel class="labela" for="sifra_opstine">Šifra opštine: </h:outputLabel>
+            <h:inputText class="txtPolje" id="sifra_opstine" value="#{logIN.firma.sifra_opstine}"/>
+            <br/>
+            <h:outputLabel class="labela" for="sifra_delatnosti">Šifra delatnosti: </h:outputLabel>
+            <h:inputText class="txtPolje" id="sifra_delatnosti" value="#{logIN.firma.sifra_delatnosti}"/>
+            <br/>
+            <h:commandButton class="formButton" value="Izmeni" action="#{logIN.firma.azuriraj()}"/>
+            
+        </h:form>
+        </div>
+        <div class="futer">
+            <div class="by">by Predrag Popov</div>
+            <div class="mentor">mentor dr Boško Nikolić</div>
+        </div>
+    </body>
+</html>

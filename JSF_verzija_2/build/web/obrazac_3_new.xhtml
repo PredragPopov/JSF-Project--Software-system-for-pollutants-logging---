@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <head>
+        <title>diplomski Predrag Popov</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" type="text/css" href="mystyle.css"/>
+    </head>
+    <body>
+        <div class="heder">
+            <h:form >
+                
+                <h:outputText  value="REFERENT FIRME #{logIN.firma.naziv}: #{logIN.korisnik.username}"/>
+                <br/><br/>
+                <h:commandButton class="meniButton" action="#{sifarnici.ucitaj()}" value="SIFARNICI"/>
+                <h:commandButton class="meniButton" action="moja_firma.xhtml" value="MOJA FIRMA"/>
+                <h:commandButton class="meniButton" action="#{ucitaj_periode.ucitaj()}" value="PERIODI"/>
+                <h:commandButton class="meniButton" action="promena_lozinke.xhtml" value="PROMENA LOZINKE"/>
+                <h:commandButton class="meniButton" action="novi_korisnik.xhtml" value="NOVI KORISNIK"/>
+                <h:commandButton class="meniButton" action="#{logIN.odjavi_se()}" value="LOG OUT"/>
+            </h:form>
+        </div>
+        <div class="sadrzaj">
+        
+            <h3>OBRAZAC 3 - ZAGAĐIVANjE VODE </h3>
+            <h:form class="forma">
+                <h:outputLabel class="labela2" for="pib">PIB: </h:outputLabel>
+                <h:inputText class="txtPolje" id="pib" value="#{obrasci.PIB}" readonly="true"/>
+                <br/>
+                <h:outputLabel class="labela2" for="period">Period: </h:outputLabel>
+                <h:inputText class="txtPolje" id="period" value="#{obrasci.period}" readonly="true"/>
+                <br/>
+                
+                <h:outputLabel class="labela2" for="naziv_ispusta">Naziv ispusta: </h:outputLabel>
+                <h:inputText class="txtPolje" id="naziv_ispusta" value="#{obrasci.obr3_new.naziv_ispusta}"/>
+                <br/>
+                <h:outputLabel class="labela2" for="broj_ispusta">Broj ispusta: </h:outputLabel>
+                <h:inputText class="txtPolje" id="broj_ispusta" value="#{obrasci.obr3_new.broj_ispusta}"/>
+                <br/>
+                <h:outputLabel class="labela2" for="rezim_rada">Režim rada ispusta: </h:outputLabel>
+                <h:inputText class="txtPolje" id="rezim_rada" value="#{obrasci.obr3_new.rezim_rada}"/>
+                <br/>
+                <h:outputLabel class="labela2" for="kapacitet">Projektovani kapacitet ispusta: </h:outputLabel>
+                <h:inputText class="txtPolje" id="kapacitet" value="#{obrasci.obr3_new.kapacitet}"/>
+                <br/>
+                <h:outputLabel class="labela2" for="vremenski_period">Vremenski period ispuštanja: </h:outputLabel>
+                <h:inputText class="txtPolje" id="vremenski_period" value="#{obrasci.obr3_new.vremenski_period}"/>
+                <br/>
+                <h:outputLabel class="labela2" for="ukupna_kolicina">Ukupna količina otpadne vode godišnje: </h:outputLabel>
+                <h:inputText class="txtPolje" id="ukupna_kolicina" value="#{obrasci.obr3_new.ukupna_kolicina}"/>
+                <br/>
+                <h:outputLabel class="labela2" for="mehanicko">Mehaničko prečišćavanje: </h:outputLabel>
+                <h:inputText class="txtPolje" id="mehanicko" value="#{obrasci.obr3_new.mehanicko}"/>
+                <br/>
+                <h:outputLabel class="labela2" for="hemisko">Hemisko prečišćavanje: </h:outputLabel>
+                <h:inputText class="txtPolje" id="hemisko" value="#{obrasci.obr3_new.hemisko}"/>
+                <br/>
+                <h:outputLabel class="labela2" for="biolosko">Biloško prečišćavanje: </h:outputLabel>
+                <h:inputText class="txtPolje" id="biolosko" value="#{obrasci.obr3_new.biolosko}"/>
+                <br/>
+                <h:outputLabel class="labela2" for="izmena_toplote">Uređaj za izmenu toplote: </h:outputLabel>
+                <h:inputText class="txtPolje" id="izmena_toplote" value="#{obrasci.obr3_new.izmena_toplote}"/>
+                <br/>
+                <h:outputLabel class="labela2" for="napomena">Napomena: </h:outputLabel>
+                <h:inputText class="txtPolje" id="napomena" value="#{obrasci.obr3_new.napomena}"/>
+                <br/>
+                
+                
+                <h:commandButton class="formButton" action="#{obrasci.new_obr3()}" value="ZAPAMTI"/>
+                
+                
+            
+                
+            </h:form>
+        
+        </div>
+        <div class="futer">
+            <div class="by">by Predrag Popov</div>
+            <div class="mentor">mentor dr Boško Nikolić</div>
+        </div>
+    </body>
+</html>

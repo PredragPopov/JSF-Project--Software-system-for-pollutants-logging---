@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <head>
+        <title>diplomski Predrag Popov</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" type="text/css" href="mystyle.css"/>
+    </head>
+    <body>
+        <div class="heder">
+            
+            <h3>REFERENT REGISTRA : #{logIN.korisnik.username}</h3>
+            
+        </div>
+        
+        <div class="sadrzaj">
+        
+            
+            <h:form>
+                
+                <h:commandButton class="startButton" action="#{sifarnici.ucitaj()}" value="ŠIFARNICI"/><br/>
+                <h:commandButton class="startButton" action="#{ucitaj_korisnike.ucitaj_korisnike()}" value="KORISNICI"/><br/>
+                <h:commandButton class="startButton" action="#{ucitaj_firme.ucitaj()}" value="FIRME"/><br/>
+                <h:commandButton class="startButton" action="#{periodi.ucitaj()}" value="PERIODI"/><br/>
+                <h:commandButton class="startButton" action="promena_lozinke.xhtml" value="PROMENA LOZINKE"/><br/>
+                <h:commandButton class="startButton" action="#{logIN.odjavi_se()}" value="LOG OUT"/><br/>
+            </h:form>
+        </div>
+        <br/>
+        <div class="futer">
+            <div class="by">by Predrag Popov</div>
+            <div class="mentor">mentor dr Boško Nikolić</div>
+        </div>
+    </body>
+</html>

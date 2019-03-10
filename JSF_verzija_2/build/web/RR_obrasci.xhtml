@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <head>
+        <title>diplomski Predrag Popov</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" type="text/css" href="mystyle.css"/>
+    </head>
+    <body>
+        <div class="heder">
+            <h:form>
+                <h:outputText  value="REFERENT REGISTRA : #{logIN.korisnik.username}"/>
+                <br/><br/>
+                <h:commandButton class="startButton2" action="#{sifarnici.ucitaj()}" value="ŠIFARNICI"/>
+                <h:commandButton class="startButton2" action="#{ucitaj_korisnike.ucitaj_korisnike()}" value="KORISNICI"/>
+                <h:commandButton class="startButton2" action="#{ucitaj_firme.ucitaj()}" value="FIRME"/>
+                <h:commandButton class="startButton2" action="#{periodi.ucitaj()}" value="PERIODI"/>
+                <h:commandButton class="startButton2" action="promena_lozinke.xhtml" value="PROMENA LOZINKE"/>
+                <h:commandButton class="startButton2" action="#{logIN.odjavi_se()}" value="LOG OUT"/>
+            </h:form>
+        </div>
+        <div class="sadrzaj">
+        
+            <h3>PREDATI OBRASCI FIRME #{predati_obrasci.firmaZ.obr_1.PIB}</h3>
+            
+            <div>
+            <h3>OBRAZAC 1 - OSNOVNI PODACI</h3>
+            <h:form class="forma">
+            <h:outputLabel class="labela" for="pib">PIB firme: </h:outputLabel>
+            <h:inputText class="txtPolje" id="pib" value="#{predati_obrasci.firmaZ.obr_1.PIB}" readonly="true"/>
+            <br/>
+            <h:outputLabel class="labela" for="period">Period: </h:outputLabel>
+            <h:inputText class="txtPolje" id="period" value="#{predati_obrasci.firmaZ.obr_1.period}" readonly="true"/>
+            <br/>
+            <h:outputLabel class="labela" for="mesto">Mesto: </h:outputLabel>
+            <h:inputText class="txtPolje" id="mesto" value="#{predati_obrasci.firmaZ.obr_1.mesto}" readonly="true"/>
+            <br/>
+            <h:outputLabel class="labela" for="opstina">Opština: </h:outputLabel>
+            <h:inputText class="txtPolje" id="opstina" value="#{predati_obrasci.firmaZ.obr_1.opstina}" readonly="true"/>
+            <br/>
+            <p>Odgovorno lice:</p>
+            <h:outputLabel class="labela" for="ol_ime_prezime">Ime i prezime: </h:outputLabel>
+            <h:inputText class="txtPolje" id="ol_ime_prezime" value="#{predati_obrasci.firmaZ.obr_1.ol_ime_prezime}" readonly="true"/>
+            <br/>
+            <h:outputLabel class="labela" for="ol_funk">Funkcija: </h:outputLabel>
+            <h:inputText class="txtPolje" id="ol_funk" value="#{predati_obrasci.firmaZ.obr_1.ol_funk}" readonly="true"/>
+            <br/>
+            <h:outputLabel class="labela" for="ol_tel">Telefon: </h:outputLabel>
+            <h:inputText class="txtPolje" id="ol_tel" value="#{predati_obrasci.firmaZ.obr_1.ol_tel}" readonly="true"/>
+            <br/>
+            <p>Kontakt lice:</p>
+            <h:outputLabel class="labela" for="k_ime_prezime">Ime i prezime: </h:outputLabel>
+            <h:inputText class="txtPolje" id="k_ime_prezime" value="#{predati_obrasci.firmaZ.obr_1.k_ime_prezime}" readonly="true"/>
+            <br/>
+            <h:outputLabel class="labela" for="k_funk">Funkcija: </h:outputLabel>
+            <h:inputText class="txtPolje" id="k_funk" value="#{predati_obrasci.firmaZ.obr_1.k_funk}" readonly="true"/>
+            <br/>
+            <h:outputLabel class="labela" for="k_tel">Telefon: </h:outputLabel>
+            <h:inputText class="txtPolje" id="k_tel" value="#{predati_obrasci.firmaZ.obr_1.k_tel}" readonly="true"/>
+            <br/>
+            <h:outputLabel class="labela" for="k_email">ePošta: </h:outputLabel>
+            <h:inputText class="txtPolje" id="k_email" value="#{predati_obrasci.firmaZ.obr_1.k_email}" readonly="true"/>
+            <br/>
+            <!--
+            <h:outputLabel class="labela" for="predato">Predat obrazac: </h:outputLabel>
+            <h:inputText class="txtPolje" id="predatoJ" value="Nije predato" rendered="#{!predati_obrasci.firmaZ.obr_1.predato}" readonly="true"/>
+            <h:inputText class="txtPolje" id="predatoN" value="predato" rendered="#{predati_obrasci.firmaZ.obr_1.predato}" readonly="true"/>
+           -->
+            <br/>
+        </h:form>
+            <h:form>
+                <h:commandButton class="newItemButton" value="SAČUVAJ PDF" action="#{predati_obrasci.stampaj_obr1()}" /> 
+            </h:form>
+        </div>
+            <hr/>
+            <div>
+                <h5>OBRAZAC 2 - ZAGAĐIVANjE VAZDUHA</h5>
+                <h:dataTable class="tabela" value="#{predati_obrasci.firmaZ.lista_obr_2}" var="obr2">
+                    <h:column>
+                    <f:facet name="header">Redni broj:</f:facet>
+                    #{obr2.ID}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Prikaz:</f:facet>
+                    <h:form>
+                    
+                        <h:commandButton class="formButton" value="PRIKAŽI" action="#{predati_obrasci.obr_2_view(obr2.ID)}" /> 
+                    </h:form>
+                </h:column>
+            
+                </h:dataTable>
+         
+         
+                </div>
+            <hr/>
+            <div>
+                <h5>OBRAZAC 3 - ZAGAĐIVANjE VODE</h5>
+                <h:dataTable class="tabela" value="#{predati_obrasci.firmaZ.lista_obr_3}" var="obr3">
+                    <h:column>
+                    <f:facet name="header">Redni broj:</f:facet>
+                    #{obr3.ID}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Prikaz:</f:facet>
+                    <h:form>
+                    
+                        <h:commandButton class="formButton" value="PRIKAŽI" action="#{predati_obrasci.obr_3_view(obr3.ID)}" /> 
+                    </h:form>
+                </h:column>
+            
+                </h:dataTable>
+         
+         
+                </div>
+            <hr/>
+            <div>
+                <h5>OBRAZAC 4 - ZAGAĐIVANjE TLA</h5>
+                <h:dataTable class="tabela" value="#{predati_obrasci.firmaZ.lista_obr_4}" var="obr4">
+                    <h:column>
+                    <f:facet name="header">Redni broj:</f:facet>
+                    #{obr4.ID}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Prikaz:</f:facet>
+                    <h:form>
+                    
+                        <h:commandButton class="formButton" value="PRIKAŽI" action="#{predati_obrasci.obr_4_view(obr4.ID)}" /> 
+                    </h:form>
+                </h:column>
+            
+                </h:dataTable>
+         
+         
+                </div>
+            <hr/>
+            <div>
+                <h5>OBRAZAC 5 - UPRAVLjANjE OTPADOM</h5>
+                <h:dataTable class="tabela" value="#{predati_obrasci.firmaZ.lista_obr_5}" var="obr5">
+                    <h:column>
+                    <f:facet name="header">Redni broj:</f:facet>
+                    #{obr5.ID}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Prikaz:</f:facet>
+                    <h:form>
+                    
+                        <h:commandButton class="formButton" value="PRIKAŽI" action="#{predati_obrasci.obr_5_view(obr5.ID)}" /> 
+                    </h:form>
+                </h:column>
+            
+                </h:dataTable>
+         
+         
+                </div>
+            <hr/>
+            
+            
+            
+        </div>
+        <div class="futer">
+            <div class="by">by Predrag Popov</div>
+            <div class="mentor">mentor dr Boško Nikolić</div>
+        </div>
+    </body>
+</html>

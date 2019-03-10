@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <head>
+        <title>diplomski Predrag Popov</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" type="text/css" href="mystyle.css"/>
+        <style type="text/css">
+            .tabelaF,th,td{
+                width: 100%;
+                //border: 2px solid blue;
+                border-collapse: collapse;
+                //border-spacing: 5px;
+                text-align: center;
+                color: rgb(0, 45, 122);
+                
+            }
+            th,td{
+                padding: 5px;
+            }
+            
+        </style>
+    </head>
+    <body>
+        <div class="heder">
+           <h:form>
+                <h:outputText  value="ADMINISTRATOR : #{logIN.korisnik.username}"/>
+                <br/><br/>
+                <h:commandButton class="startButton2" action="#{a_korisnici.ucitaj_korisnike()}" value="PREGLED KORISNIKA"/>
+                <h:commandButton class="startButton2" action="#{a_firme.ucitaj()}" value="PREGLED FIRMI"/>
+                <h:commandButton class="startButton2" action="promena_lozinke.xhtml" value="PROMENA LOZINKE"/>
+                <h:commandButton class="startButton2" action="#{logIN.odjavi_se()}" value="LOG OUT"/>
+                
+            </h:form>
+            
+        </div>
+        
+        
+        <div class="sadrzaj">
+            <h3>SPISAK FIRMI:</h3>
+            
+            <div class="pretraga">
+                
+                <h:form>
+                    <h:outputLabel class="labela">PIB firme: </h:outputLabel>
+                    <h:inputText class="txtPolje" id="username" value="#{a_firme.pib}"/>
+                    <h:commandButton class="btnPretraga" action="#{a_firme.pretraga(1)}" value="PRETRAŽI"/>
+                </h:form>
+                <h:form>
+                    <h:outputLabel class="labela">Naziv: </h:outputLabel>
+                    <h:inputText class="txtPolje" id="username" value="#{a_firme.naziv}"/>
+                    <h:commandButton class="btnPretraga" action="#{a_firme.pretraga(2)}" value="PRETRAŽI"/>
+                </h:form>
+                <h:form>
+                    <h:outputLabel class="labela">Mesto: </h:outputLabel>
+                    <h:inputText class="txtPolje" id="username" value="#{a_firme.mesto}"/>
+                    <h:commandButton class="btnPretraga" action="#{a_firme.pretraga(3)}" value="PRETRAŽI"/>
+                </h:form>
+                
+            </div>
+            
+            <h:dataTable class="tabela" value="#{a_firme.lista}" var="firma">
+         
+                <h:column>    				
+                    <f:facet name="header">PIB</f:facet>    				
+                    #{firma.PIB}
+                </h:column>
+                <h:column>    				
+                    <f:facet name="header">Maticni broj:</f:facet>    				
+                    #{firma.maticni_broj}
+                </h:column>
+                <h:column>    				
+                    <f:facet name="header">Naziv:</f:facet>    				
+                    #{firma.naziv}
+                </h:column>
+                <h:column>    				
+                    <f:facet name="header">Delatnost:</f:facet>    				
+                    #{firma.delatnost}
+                </h:column>
+                <h:column>    				
+                    <f:facet name="header">Šifra delatnosi:</f:facet>    				
+                    #{firma.sifra_delatnosti}
+                </h:column>
+                <h:column>    				
+                    <f:facet name="header">Mesto:</f:facet>    				
+                    #{firma.mesto}
+                </h:column>
+                <h:column>    				
+                    <f:facet name="header">Šifra mesta:</f:facet>    				
+                    #{firma.sifra_mesta}
+                </h:column>
+                <h:column>    				
+                    <f:facet name="header">Poštanski broj:</f:facet>    				
+                    #{firma.postanski_broj}
+                </h:column>
+                <h:column>    				
+                    <f:facet name="header">Ulica i broj:</f:facet>    				
+                    #{firma.ulica_broj}
+                </h:column>
+                <h:column>    				
+                    <f:facet name="header">Telefon:</f:facet>    				
+                    #{firma.telefon}
+                </h:column>
+                <h:column>    				
+                    <f:facet name="header">ePošta:</f:facet>    				
+                    #{firma.email}
+                </h:column>
+                <h:column>    				
+                    <f:facet name="header">Opština:</f:facet>    				
+                    #{firma.opstina}
+                </h:column>
+                <h:column>    				
+                    <f:facet name="header">Šifra opštine:</f:facet>    				
+                    #{firma.sifra_opstine}
+                </h:column>
+                <h:column>    				
+                    <f:facet name="header">Arhivirano:</f:facet> 
+                    <h:outputText value="arhiviran" rendered="#{firma.arhiviran}"/>
+                    <h:outputText value="nije" rendered="#{!firma.arhiviran}"/>
+                </h:column>
+                <h:column>    				
+                    <f:facet name="header">Arhiviraj / aktiviraj</f:facet> 
+                    <h:form rendered="#{firma.arhiviran}">
+                        <h:commandButton class="formButton"  action="#{a_firme.aktivacija(firma.PIB,1)}" value="AKTIVIRAJ"/>
+                    </h:form>
+                    <h:form rendered="#{!firma.arhiviran}">
+                        <h:commandButton class="formButton"  action="#{a_firme.aktivacija(firma.PIB,2)}" value="ARHIVIRAJ"/>
+                    </h:form>
+                    
+                </h:column>
+                
+            </h:dataTable>
+        <br/>
+        <h3>Napravi novu firmu</h3>
+        
+        <h:form class="forma">
+            
+            <h:outputLabel class="labela" for="pib">PIB: </h:outputLabel>
+            <h:inputText class="txtPolje" id="pib" value="#{a_firme.firmaX.PIB}"  required="true"/>
+            <br/>
+            <h:outputLabel class="labela" for="maticni_broj">Maticni broj: </h:outputLabel>
+            <h:inputText class="txtPolje" id="maticni_broj" value="#{a_firme.firmaX.maticni_broj}"  required="true"/>
+            <br/>
+            <h:outputLabel class="labela" for="naziv">Naziv: </h:outputLabel>
+            <h:inputText class="txtPolje" id="naziv" value="#{a_firme.firmaX.naziv}"  required="true"/>
+            <br/>
+            <h:outputLabel class="labela" for="delatnost">Delatnost: </h:outputLabel>
+            <h:inputText class="txtPolje" id="delatnost" value="#{a_firme.firmaX.delatnost}" />
+            <br/><hr/>
+            
+            <h5>Adresa:</h5>
+            <h:outputLabel class="labela" for="mesto">Mesto: </h:outputLabel>
+            <h:inputText class="txtPolje" id="mesto" value="#{a_firme.firmaX.mesto}"/>
+            <br/>
+            <h:outputLabel class="labela" for="sifra_mesta">Sifra mesta: </h:outputLabel>
+            <h:inputText class="txtPolje" id="sifra_mesta" value="#{a_firme.firmaX.sifra_mesta}"/>
+            <br/>
+            <h:outputLabel class="labela" for="postanski_broj">Poštanski broj: </h:outputLabel>
+            <h:inputText class="txtPolje" id="postanski_broj" value="#{a_firme.firmaX.postanski_broj}"/>
+            <br/>
+            <h:outputLabel class="labela" for="ulica_broj">Ulica i broj: </h:outputLabel>
+            <h:inputText class="txtPolje" id="ulica_broj" value="#{a_firme.firmaX.ulica_broj}"/>
+            <br/>
+            <h:outputLabel class="labela" for="telefon">Telefon: </h:outputLabel>
+            <h:inputText class="txtPolje" id="telefon" value="#{a_firme.firmaX.telefon}"/>
+            <br/>
+            <h:outputLabel class="labela" for="email">ePošta: </h:outputLabel>
+            <h:inputText class="txtPolje" id="email" value="#{a_firme.firmaX.email}"/>
+            <br/><hr/>
+            
+            <h:outputLabel class="labela" for="opstina">Opština: </h:outputLabel>
+            <h:inputText class="txtPolje" id="opstina" value="#{a_firme.firmaX.opstina}"/>
+            <br/>
+            <h:outputLabel class="labela" for="sifra_opstine">Šifra opštine: </h:outputLabel>
+            <h:inputText class="txtPolje" id="sifra_opstine" value="#{a_firme.firmaX.sifra_opstine}"/>
+            <br/>
+            <h:outputLabel class="labela" for="sifra_delatnosti">Šifra delatnosti: </h:outputLabel>
+            <h:inputText class="txtPolje" id="sifra_delatnosti" value="#{a_firme.firmaX.sifra_delatnosti}"/>
+            <br/>
+            <h:commandButton class="formButton" value="Napravi" action="#{a_firme.napravi_novu()}"/>
+             
+        
+        </h:form>
+        
+        </div>
+        <div class="futer">
+            <div class="by">by Predrag Popov</div>
+            <div class="mentor">mentor dr Boško Nikolić</div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <head>
+        <title>diplomski Predrag Popov</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" type="text/css" href="mystyle.css"/>
+        <style type="text/css">
+            .labela21{
+                width: 316px;
+                display: block;
+                float:left;
+                margin-bottom: 5px;
+                text-align: left
+            }
+        </style>
+    </head>
+    <body>
+        <div class="heder">
+            <h:form >
+                
+                <h:outputText  value="REFERENT FIRME #{logIN.firma.naziv}: #{logIN.korisnik.username}"/>
+                <br/><br/>
+                <h:commandButton class="meniButton" action="#{sifarnici.ucitaj()}" value="SIFARNICI"/>
+                <h:commandButton class="meniButton" action="moja_firma.xhtml" value="MOJA FIRMA"/>
+                <h:commandButton class="meniButton" action="#{ucitaj_periode.ucitaj()}" value="PERIODI"/>
+                <h:commandButton class="meniButton" action="promena_lozinke.xhtml" value="PROMENA LOZINKE"/>
+                <h:commandButton class="meniButton" action="novi_korisnik.xhtml" value="NOVI KORISNIK"/>
+                <h:commandButton class="meniButton" action="#{logIN.odjavi_se()}" value="LOG OUT"/>
+            </h:form>
+        </div>
+        <div class="sadrzaj">
+            <h3>OBRAZAC 4 - ZAGAĐIVANjE TLA</h3>
+            <h:form class="forma">
+                <h:outputLabel class="labela2" for="pib">PIB: </h:outputLabel>
+                <h:inputText class="txtPolje" id="pib" value="#{obrasci.obr4.PIB}" readonly="true"/>
+                <br/>
+                
+                <h:outputLabel class="labela2" for="period">Period: </h:outputLabel>
+                <h:inputText class="txtPolje" id="period" value="#{obrasci.obr4.period}" readonly="true"/>
+                <br/>
+                <h:outputLabel class="labela2" for="naziv_lokacije">Naziv lokacije: </h:outputLabel>
+                <h:inputText class="txtPolje" id="naziv_lokacije" value="#{obrasci.obr4.naziv_lokacije}"/>
+                <br/>
+                <h:outputLabel class="labela2" for="vrsta_otpada">Vrsta otpada: </h:outputLabel>
+                <h:inputText class="txtPolje" id="vrsta_otpada" value="#{obrasci.obr4.vrsta_otpada}"/>
+                <br/>
+                <h:outputLabel class="labela2" for="kolicina_godisnje">Ispuštena količina godišnje: </h:outputLabel>
+                <h:inputText class="txtPolje" id="kolicina_godisnje" value="#{obrasci.obr4.kolicina_godisnje}"/>
+                <br/>
+                <h:outputLabel class="labela2" for="nacin_odlaganja">Način odlaganja: </h:outputLabel>
+                <h:inputText class="txtPolje" id="nacin_odlaganja" value="#{obrasci.obr4.nacin_odlaganja}"/>
+                <br/>
+                <h:outputLabel class="labela2" for="napomena">Napomena: </h:outputLabel>
+                <h:inputText class="txtPolje" id="napomena" value="#{obrasci.obr4.napomena}"/>
+                <br/>
+                <h:outputLabel class="labela2" for="predato">Predato: </h:outputLabel>
+            <h:inputText class="txtPolje" id="predatoJ" value="Nije predato" rendered="#{!obrasci.obr4.predato}" readonly="true" />
+            <h:inputText class="txtPolje" id="predatoN" value="predato" rendered="#{obrasci.obr4.predato}" readonly="true"/>
+            <br/>
+                
+                <h:commandButton class="formButton" action="#{obrasci.edit_obr4(obrasci.obr4.ID)}" value="AŽURIRAJ" rendered="#{!obrasci.obr4.predato}"/>
+                <h:commandButton class="formButton" action="#{obrasci.predaj_obr4(obrasci.obr4.ID)}" value="PREDAJ" rendered="#{!obrasci.obr4.predato}"/>
+            <br/>
+                </h:form>
+                <h5>MATERIJE TLA</h5>
+                <h:dataTable class="tabela" value="#{obrasci.obr4.materije_tlo}" var="zemlja">
+                
+                <h:column>
+                    <f:facet name="header">Naziv</f:facet>
+                    #{zemlja.naziv}
+                </h:column>
+                    <h:column>
+                    <f:facet name="header">CAS broj</f:facet>
+                    #{zemlja.CAS}
+                </h:column>
+                    <h:column>
+                    <f:facet name="header">Koncetracija zagađujuće materije u otpadu</f:facet>
+                    #{zemlja.koncetracija}
+                </h:column>
+                    <h:column>
+                    <f:facet name="header">Nacin odredjivanja</f:facet>
+                    #{zemlja.nacin_odredjivanja}
+                </h:column>
+                    <h:column>
+                    <f:facet name="header">Metod odredjivanja</f:facet>
+                    #{zemlja.metod_odredjivanja}
+                </h:column>
+                    
+                
+                <h:column>
+                    <f:facet name="header">Obriši</f:facet>
+                    <h:form>
+                        <h:commandButton class="formButton" value="OBRIŠI" action="#{obrasci.obrisi_materiju_zemlja(zemlja.ID,obrasci.obr4.ID)}" rendered="#{!obrasci.obr4.predato}"/> 
+                    </h:form>
+                </h:column>
+                
+            </h:dataTable>
+                
+            
+            
+            <h:form rendered="#{!obrasci.obr4.predato}">
+                <h3>Dodaj novu materiju tla u ovaj obrazac 4</h3>
+                <h:outputLabel class="labela21" for="naziv">Naziv: </h:outputLabel>
+                <h:inputText class="txtPolje" id="naziv" value="#{obrasci.zemlja.naziv}"/>
+                <br/>
+                <h:outputLabel class="labela21" for="CAS">CAS broj: </h:outputLabel>
+                <h:inputText class="txtPolje" id="CAS" value="#{obrasci.zemlja.CAS}"/>
+                <br/>
+                <h:outputLabel class="labela21" for="koncetracija">Koncetracija zagađujuće materije u otpadu: </h:outputLabel>
+                <h:inputText class="txtPolje" id="koncetracija" value="#{obrasci.zemlja.koncetracija}"/>
+                <br/>
+                <h:outputLabel class="labela21" for="nacin_odredjivanja">Nacin odredjivanja: </h:outputLabel>
+                <h:inputText class="txtPolje" id="nacin_odredjivanja" value="#{obrasci.zemlja.nacin_odredjivanja}"/>
+                <br/>
+                <h:outputLabel class="labela21" for="metod_odredjivanja">Metod odredjivanja: </h:outputLabel>
+                <h:inputText class="txtPolje" id="metod_odredjivanja" value="#{obrasci.zemlja.metod_odredjivanja}"/>
+                <br/>
+                
+                <h:commandButton class="formButton" action="#{obrasci.new_materije_tlo(obrasci.obr4.ID)}" value="DODAJ"/>
+            </h:form>
+        </div>
+        <div class="futer">
+            <div class="by">by Predrag Popov</div>
+            <div class="mentor">mentor dr Boško Nikolić</div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <head>
+        <title>diplomski Predrag Popov</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" type="text/css" href="mystyle.css"/>
+    </head>
+    <body>
+        <div class="heder">
+            <h:form>
+                <h:outputText  value="REFERENT REGISTRA : #{logIN.korisnik.username}"/>
+                <br/><br/>
+                <h:commandButton class="startButton2" action="#{sifarnici.ucitaj()}" value="ŠIFARNICI"/>
+                <h:commandButton class="startButton2" action="#{ucitaj_korisnike.ucitaj_korisnike()}" value="KORISNICI"/>
+                <h:commandButton class="startButton2" action="#{ucitaj_firme.ucitaj()}" value="FIRME"/>
+                <h:commandButton class="startButton2" action="#{periodi.ucitaj()}" value="PERIODI"/>
+                <h:commandButton class="startButton2" action="promena_lozinke.xhtml" value="PROMENA LOZINKE"/>
+                <h:commandButton class="startButton2" action="#{logIN.odjavi_se()}" value="LOG OUT"/>
+            </h:form>
+        </div>
+        <div class="sadrzaj">
+            <h3>PERIODI:</h3>
+            
+            <h:dataTable class="tabela" value="#{periodi.lista}" var="period">
+            <h:column>
+                <f:facet name="header">Za period:</f:facet>
+                <h:outputText value="#{period.godina}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Zaključan:</f:facet>
+                <h:outputText value="jeste " rendered="#{period.zakljucan}"/>
+                <h:outputText value="nije" rendered="#{!period.zakljucan}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Zaključaj/otključaj:</f:facet>
+                <h:form id="myForm11" rendered="#{period.zakljucan}">
+                    <h:commandButton class="formButton" value="OTKLjUČAJ" action="#{periodi.promena(period.ID,1)}" /> 
+                </h:form>
+                <h:form id="myForm12" rendered="#{!period.zakljucan}">
+                    <h:commandButton class="formButton" value="ZAKLjUČAJ" action="#{periodi.promena(period.ID,2)}" /> 
+                </h:form>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Firme koje su predale obrasce za ovaj period:</f:facet>
+                <h:form id="myForm2">
+                    <h:commandButton class="formButton" value="PRIKAŽI" action="#{predati_obrasci.ucitaj(period.godina)}" /> 
+                </h:form>
+            </h:column>
+                <h:column>
+                <f:facet name="header">Obriši period:</f:facet>
+                <h:form id="myForm66">
+                    <h:commandButton class="formButton" value="OBRIŠI" action="#{periodi.obrisi(period.ID)}" /> 
+                </h:form>
+            </h:column>
+        </h:dataTable>
+            <br/>
+            <h3>DODAJ NOVI PERIOD</h3>
+            <h:form class="forma">
+                <h:outputLabel class="labela" for="godina:">Za period: </h:outputLabel>
+                <h:inputText class="txtPolje" id="godina" value="#{periodi.new_period.godina}"/>
+                <br/>
+                <h:outputLabel class="labela" for="zakljucan">Zaključan: </h:outputLabel>
+                <h:selectBooleanCheckbox value="#{periodi.zakljucan}" id="zakljucan" />
+                <br/>
+                <h:commandButton class="formButton" value="DODAJ" action="#{periodi.dodaj_novi()}" /> 
+            </h:form>
+            
+        </div>
+        <div class="futer">
+            <div class="by">by Predrag Popov</div>
+            <div class="mentor">mentor dr Boško Nikolić</div>
+        </div>
+    </body>
+</html>

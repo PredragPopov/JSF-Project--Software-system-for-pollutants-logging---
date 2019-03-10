@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <head>
+        <title>diplomski Predrag Popov</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" type="text/css" href="mystyle.css"/>
+    </head>
+    <body>
+        <div class="heder">
+            <h:form>
+                <h:outputText  value="REFERENT REGISTRA : #{logIN.korisnik.username}"/>
+                <br/><br/>
+                <h:commandButton class="startButton2" action="#{sifarnici.ucitaj()}" value="ŠIFARNICI"/>
+                <h:commandButton class="startButton2" action="#{ucitaj_korisnike.ucitaj_korisnike()}" value="KORISNICI"/>
+                <h:commandButton class="startButton2" action="#{ucitaj_firme.ucitaj()}" value="FIRME"/>
+                <h:commandButton class="startButton2" action="#{periodi.ucitaj()}" value="PERIODI"/>
+                <h:commandButton class="startButton2" action="promena_lozinke.xhtml" value="PROMENA LOZINKE"/>
+                <h:commandButton class="startButton2" action="#{logIN.odjavi_se()}" value="LOG OUT"/>
+            </h:form>
+        </div>
+        <div class="sadrzaj">
+        
+            <h3>OBRAZAC 2 - ZAGAĐIVANjE VAZDUHA</h3>
+        
+            <h:form class="forma">
+            <h:outputLabel class="labela2" for="pib">PIB firme: </h:outputLabel>
+            <h:inputText class="txtPolje" id="pib" value="#{predati_obrasci.obr2.PIB}" readonly="true"/>
+            <br/>
+            <h:outputLabel class="labela2" for="period">Period: </h:outputLabel>
+            <h:inputText class="txtPolje" id="period" value="#{predati_obrasci.obr2.period}" readonly="true"/>
+            <br/>
+            <h:outputLabel class="labela2" for="naziv_izvora">Naziv izvora: </h:outputLabel>
+            <h:inputText class="txtPolje" id="naziv_izvora" value="#{predati_obrasci.obr2.naziv_izvora}" readonly="true"/>
+            <br/>
+            <h:outputLabel class="labela2" for="broj_izvora">Broj izvora: </h:outputLabel>
+            <h:inputText class="txtPolje" id="broj_izvora" value="#{predati_obrasci.obr2.broj_izvora}" readonly="true"/>
+            <br/>
+            <h:outputLabel class="labela2" for="vrsta_ivora">Vrsta izvora: </h:outputLabel>
+            <h:inputText class="txtPolje" id="vrsta_ivora" value="#{predati_obrasci.obr2.vrsta_ivora}" readonly="true"/>
+            <br/>
+            <h:outputLabel class="labela2" for="nadmorska_visina">Nadmorska visina: </h:outputLabel>
+            <h:inputText class="txtPolje" id="nadmorska_visina" value="#{predati_obrasci.obr2.nadmorska_visina}" readonly="true"/>
+            <br/>
+            <h:outputLabel class="labela2" for="visina_izvora">Visina izvora: </h:outputLabel>
+            <h:inputText class="txtPolje" id="visina_izvora" value="#{predati_obrasci.obr2.visina_izvora}" readonly="true"/>
+            <br/>
+            <h:outputLabel class="labela2" for="precnik">Unutrašnji precnik ispusta: </h:outputLabel>
+            <h:inputText class="txtPolje" id="precnik" value="#{predati_obrasci.obr2.precnik}" readonly="true"/>
+            <br/>
+            <h:outputLabel class="labela2" for="iskoriscenost">Godišnja iskorišćenost kapaciteta: </h:outputLabel>
+            <h:inputText class="txtPolje" id="iskoriscenost" value="#{predati_obrasci.obr2.iskoriscenost}" readonly="true"/>
+            <br/>
+            <h:outputLabel class="labela2" for="toplotna_snaga">Instalisana toplotna snaga na izlazu: </h:outputLabel>
+            <h:inputText class="txtPolje" id="toplotna_snaga" value="#{predati_obrasci.obr2.toplotna_snaga}" readonly="true"/>
+            <br/>
+            <h:outputLabel class="labela2" for="srednja_god_temp">Srednja godišnja temperatura materije: </h:outputLabel>
+            <h:inputText class="txtPolje" id="srednja_god_temp" value="#{predati_obrasci.obr2.srednja_god_temp}" readonly="true"/>
+            <br/>
+            <h:outputLabel class="labela2" for="brzina">Brzina ispusta: </h:outputLabel>
+            <h:inputText class="txtPolje" id="brzina" value="#{predati_obrasci.obr2.brzina}" readonly="true"/>
+            <br/>
+            <h:outputLabel class="labela2" for="protok">Protok: </h:outputLabel>
+            <h:inputText class="txtPolje" id="protok" value="#{predati_obrasci.obr2.protok}" readonly="true"/>
+            <br/>
+            <h:outputLabel class="labela2" for="rezim_rada">Režim rada: </h:outputLabel>
+            <h:inputText class="txtPolje" id="rezim_rada" value="#{predati_obrasci.obr2.rezim_rada}" readonly="true"/>
+            <br/>
+            <h:outputLabel class="labela2" for="dana_godisnje">Broj radnih dana godišnje: </h:outputLabel>
+            <h:inputText class="txtPolje" id="dana_godisnje" value="#{predati_obrasci.obr2.dana_godisnje}" readonly="true"/>
+            <br/>
+            <h:outputLabel class="labela2" for="sati_dnevno">Broj radnih sati dnevno: </h:outputLabel>
+            <h:inputText class="txtPolje" id="sati_dnevno" value="#{predati_obrasci.obr2.sati_dnevno}" readonly="true"/>
+            <br/>
+            <h:outputLabel class="labela2" for="napomena">Napomena: </h:outputLabel>
+            <h:inputText class="txtPolje" id="napomena" value="#{predati_obrasci.obr2.napomena}" readonly="true"/>
+            <br/>
+            <!--
+            <h:outputLabel class="labela2" for="predato">Predat obrazac: </h:outputLabel>
+            <h:inputText id="predatoJ" value="Nije predato" rendered="#{!predati_obrasci.obr2.predato}" readonly="true"/>
+            <h:inputText id="predatoN" value="predato" rendered="#{predati_obrasci.obr2.predato}" readonly="true"/>
+            <br/>
+            -->
+            </h:form>
+            <br/>
+            <h5>MATERIJE U VAZDUHU vazduh</h5>
+            <h:dataTable class="tabela" value="#{predati_obrasci.obr2.materije_vazduh}" var="mv">
+                <h:column>
+                    <f:facet name="header">Naziv:</f:facet>
+                    #{mv.naziv}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Srednja godišnja izmerena vrednost</f:facet>
+                    #{mv.SGIV}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Emitovane količine u toku normalnog rada postrojenja (g/h)</f:facet>
+                    #{mv.EKN}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Emitovane količine u toku normalnog rada postrojenja (kg/god)</f:facet>
+                    #{mv.EKE}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Metod odredjivanja</f:facet>
+                    #{mv.metod_odredjivanja}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Nacin odredjivanja</f:facet>
+                    #{mv.nacin_odredjivanja}
+                </h:column>
+                
+                
+                
+            </h:dataTable>
+            <h:form>
+                <h:commandButton class="newItemButton" value="SAČUVAJ PDF" action="#{predati_obrasci.stampaj_obr2()}" /> 
+            </h:form>
+        </div>
+        <div class="futer">
+            <div class="by">by Predrag Popov</div>
+            <div class="mentor">mentor dr Boško Nikolić</div>
+        </div>
+        
+    </body>
+</html>

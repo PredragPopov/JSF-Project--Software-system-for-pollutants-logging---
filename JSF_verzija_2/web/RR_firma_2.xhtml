@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <head>
+        <title>diplomski Predrag Popov</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" type="text/css" href="mystyle.css"/>
+    </head>
+    <body>
+        <div class="heder">
+            <h:form>
+                <h:commandButton class="meniButton2" action="#{sifarnici.ucitaj()}" value="ŠIFARNICI"/>
+                <h:commandButton class="meniButton2" action="#{ucitaj_korisnike.ucitaj_korisnike()}" value="KORISNICI"/>
+                <h:commandButton class="meniButton2" action="#{ucitaj_firme.ucitaj()}" value="FIRME"/>
+                <h:commandButton class="meniButton2" action="#{periodi.ucitaj()}" value="PERIODI"/>
+                <h:commandButton class="meniButton2" action="promena_lozinke.xhtml" value="PROMENA LOZINKE"/>
+                <h:commandButton class="meniButton2" action="#{logIN.odjavi_se()}" value="LOG OUT"/>
+            </h:form>
+        </div>
+        <div class="sadrzaj">
+        <h3>RR_firma_2</h3>
+            
+            <h:form>
+            
+            <h:outputLabel class="labela" for="pib">PIB: </h:outputLabel>
+            <h:inputText class="txtPolje" id="pib" value="#{rr_firma.firma.PIB}" readonly="true"/>
+            <br/>
+            <h:outputLabel class="labela" for="maticni_broj">Maticni broj: </h:outputLabel>
+            <h:inputText class="txtPolje" id="maticni_broj" value="#{rr_firma.firma.maticni_broj}" readonly="true"/>
+            <br/>
+            <h:outputLabel class="labela" for="naziv">Naziv: </h:outputLabel>
+            <h:inputText class="txtPolje" id="naziv" value="#{rr_firma.firma.naziv}" readonly="true"/>
+            <br/>
+            <h:outputLabel class="labela" for="delatnost">Delatnost: </h:outputLabel>
+            <h:inputText class="txtPolje" id="delatnost" value="#{rr_firma.firma.delatnost}" readonly="true"/>
+            <br/><hr/>
+            
+            <h5>Adresa:</h5>
+            <h:outputLabel class="labela" for="mesto">Mesto: </h:outputLabel>
+            <h:inputText class="txtPolje" id="mesto" value="#{rr_firma.firma.mesto}" readonly="true"/>
+            <br/>
+            <h:outputLabel class="labela" for="sifra_mesta">Sifra mesta: </h:outputLabel>
+            <h:inputText class="txtPolje" id="sifra_mesta" value="#{rr_firma.firma.sifra_mesta}" readonly="true"/>
+            <br/>
+            <h:outputLabel class="labela" for="postanski_broj">Postanski broj: </h:outputLabel>
+            <h:inputText class="txtPolje" id="postanski_broj" value="#{rr_firma.firma.postanski_broj}" readonly="true"/>
+            <br/>
+            <h:outputLabel class="labela" for="ulica_broj">Ulica i broj: </h:outputLabel>
+            <h:inputText class="txtPolje" id="ulica_broj" value="#{rr_firma.firma.ulica_broj}" readonly="true"/>
+            <br/>
+            <h:outputLabel class="labela" for="telefon">Telefon: </h:outputLabel>
+            <h:inputText class="txtPolje" id="telefon" value="#{rr_firma.firma.telefon}" readonly="true"/>
+            <br/>
+            <h:outputLabel class="labela" for="email">Email: </h:outputLabel>
+            <h:inputText class="txtPolje" id="email" value="#{rr_firma.firma.email}" readonly="true"/>
+            <br/><hr/>
+            
+            <h:outputLabel class="labela" for="opstina">Opstina: </h:outputLabel>
+            <h:inputText class="txtPolje" id="opstina" value="#{rr_firma.firma.opstina}" readonly="true"/>
+            <br/>
+            <h:outputLabel class="labela" for="sifra_opstine">Sifra opstine: </h:outputLabel>
+            <h:inputText class="txtPolje" id="sifra_opstine" value="#{rr_firma.firma.sifra_opstine}" readonly="true"/>
+            <br/>
+            <h:outputLabel class="labela" for="sifra_delatnosti">Sifra delatnosti: </h:outputLabel>
+            <h:inputText class="txtPolje" id="sifra_delatnosti" value="#{rr_firma.firma.sifra_delatnosti}" readonly="true"/>
+            <br/>
+            <h:outputLabel class="labela" for="arhiviran">arhiviran </h:outputLabel>
+            <h:inputText id="predatoJ" value="Nije predato" rendered="#{!rr_firma.firma.arhiviran}" readonly="true"/>
+            <h:inputText id="predatoN" value="predato" rendered="#{rr_firma.firma.arhiviran}" readonly="true"/>
+            <br/>
+            
+            
+        </h:form>
+        
+        </div>
+        <div class="futer">
+            <div class="by">by Predrag Popov</div>
+            <div class="mentor">mentor dr Boško Nikolić</div>
+        </div>
+    </body>
+</html>

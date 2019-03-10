@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <head>
+        <title>diplomski Predrag Popov</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" type="text/css" href="mystyle.css"/>
+    </head>
+    <body>
+        
+        <div class="heder" >
+            
+            <h:form rendered="#{logIN.r_firme}">
+                
+                <h:outputText  value="REFERENT FIRME #{logIN.firma.naziv}: #{logIN.korisnik.username}"/>
+                <br/> <br/>
+                <h:commandButton class="meniButton" action="#{sifarnici.ucitaj()}" value="SIFARNICI"/>
+                <h:commandButton class="meniButton" action="moja_firma.xhtml" value="MOJA FIRMA"/>
+                <h:commandButton class="meniButton" action="#{ucitaj_periode.ucitaj()}" value="PERIODI"/>
+                <h:commandButton class="meniButton" action="promena_lozinke.xhtml" value="PROMENA LOZINKE"/>
+                <h:commandButton class="meniButton" action="novi_korisnik.xhtml" value="NOVi KORISNIK"/>
+                <h:commandButton class="meniButton" action="#{logIN.odjavi_se()}" value="LOG OUT"/>
+            </h:form>
+            
+            <h:form rendered="#{!logIN.r_firme}">
+                <h:outputText  value="REFERENT REGISTRA : #{logIN.korisnik.username}"/>
+                <br/><br/>
+                <h:commandButton class="meniButton" action="#{sifarnici.ucitaj()}" value="ŠIFARNICI"/>
+                <h:commandButton class="meniButton" action="#{ucitaj_korisnike.ucitaj_korisnike()}" value="KORISNICI"/>
+                <h:commandButton class="meniButton" action="#{ucitaj_firme.ucitaj()}" value="FIRME"/>
+                <h:commandButton class="meniButton" action="#{periodi.ucitaj()}" value="PERIODI"/>
+                <h:commandButton class="meniButton" action="promena_lozinke.xhtml" value="PROMENA LOZINKE"/>
+                <h:commandButton class="meniButton" action="#{logIN.odjavi_se()}" value="LOG OUT"/>
+            </h:form>
+            
+            
+        </div>
+        <div clas="sadrzaj">
+        
+            <h3>ŠIFARNICI</h3>
+            
+            <h:dataTable class="tabela" value="#{sifarnici.lista_s}" var="sifarnik">
+            <h:column>
+                <f:facet name="header">ID</f:facet>
+                <h:outputText value="#{sifarnik.ID}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">NAZIV</f:facet>
+                <h:outputText value="#{sifarnik.naziv}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">PREGLED</f:facet>
+                <h:form id="myForm">
+                    
+                    <h:commandButton class="formButton" value="PRIKAŽI" action="#{ucitajSifre.ucitajS(sifarnik.ID)}" /> 
+                </h:form>
+            </h:column>
+        </h:dataTable>
+            <br/><br/>
+        </div>
+        <div class="futer">
+            <div class="by">by Predrag Popov</div>
+            <div class="mentor">mentor dr Boško Nikolić</div>
+        </div>
+    </body>
+</html>

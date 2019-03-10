@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <head>
+        <title>diplomski Predrag Popov</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" type="text/css" href="mystyle.css"/>
+    </head>
+    <body>
+        <div class="heder">
+           
+            
+            <h:form>
+                <h:outputText  value="ADMINISTRATOR : #{logIN.korisnik.username}"/>
+                <br/><br/>
+                <h:commandButton class="startButton2" action="#{a_korisnici.ucitaj_korisnike()}" value="PREGLED KORISNIKA"/>
+                <h:commandButton class="startButton2" action="#{a_firme.ucitaj()}" value="PREGLED FIRMI"/>
+                <h:commandButton class="startButton2" action="promena_lozinke.xhtml" value="PROMENA LOZINKE"/>
+                <h:commandButton class="startButton2" action="#{logIN.odjavi_se()}" value="LOG OUT"/>
+                
+            </h:form>
+        </div>
+        
+        
+        <div class="sadrzaj">
+        
+            <h:form>
+                <h:outputLabel for="lozinka_stara">Unesite staru lozinku: </h:outputLabel>
+                <h:inputText id="lozinka_stara" value="#{logIN.lozinka_stara}">
+                    <f:validateLength minimum="5" maximum="32" />
+            </h:inputText>
+                <br/>
+                <h:outputLabel for="lozinka_nova">Unesite novu lozinku: </h:outputLabel>
+                <h:inputText id="lozinka_nova" value="#{logIN.lozinka_nova}">
+                    <f:validateLength minimum="5" maximum="32" />
+            </h:inputText>
+                <br/>
+                <h:outputLabel for="lozinka_stara_">Potvrdite novu lozinku: </h:outputLabel>
+                <h:inputText id="lozinka_stara_" value="#{logIN.lozinka_stara}">
+                    <f:validateLength minimum="5" maximum="32" />
+            </h:inputText>
+                <br/>
+                <h:commandButton action="#{logIN.promena_lozinke()}" value="promeni"/>
+                <br/><h:message for="lozinka_stara" style="color:red" />
+                <br/><h:message for="lozinka_nova" style="color:red" />
+                <br/><h:message for="lozinka_stara_" style="color:red" />
+            </h:form>
+        
+        </div>
+        <div class="futer">
+            <div class="by">by Predrag Popov</div>
+            <div class="mentor">mentor dr Boško Nikolić</div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,146 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Nov 15, 2015, 11:51:26 AM
+    Author     : POPOV
+*/
+html{
+                background: url(images/pozadina8.jpg);
+                color: whitesmoke;
+                font-family: Tahoma, Geneva, sans-serif;
+                color: rgb(0, 45, 122);
+                //color: rgb(205,33,34);
+    }
+body{
+                margin-top: 30px;
+                margin-left: 10%;
+                margin-right: 10%;
+                text-align: center;
+            }
+            .sadrzaj{
+                padding-top: 30px;
+                padding-left: 30px;
+                padding-bottom: 20px;
+                //border: 2px solid green;
+                
+            }
+            
+            .heder{
+                //border: 2px solid red;
+                font-weight: bold;
+                padding-top: 30px;
+                padding-bottom: 30px;
+                
+            }
+            .meniButton{
+                width: 16%;
+                height: 40px;
+                color: rgb(205,33,34);
+                font-weight: bold;
+                padding: 10px;
+            }
+            
+            
+            .futer{
+                //border: 2px solid blue;
+                float: bottom;
+            }
+            .startButton{
+                width: 300px;
+                height: 40px;
+                color: rgb(205,33,34);
+                font-weight: bold;
+                //padding: 20px;
+            }
+            .startButton2{
+                width: 200px;
+                height: 40px;
+                color: rgb(205,33,34);
+                font-weight: bold;
+                //padding: 20px;
+            }
+            .by{
+                float:left;
+                padding-left: 50px;
+            }
+            .mentor{
+                float:right;
+                padding-right: 50px;
+            }
+           table{
+                width: 100%;
+                border-collapse: collapse;
+                text-align: center;
+                color: rgb(0, 45, 122);
+                
+            }
+            
+            th{
+                border-bottom: 2px solid rgb(0, 45, 122);
+                height: 30px;
+            }
+            label{
+                width: 300px;
+            }
+            .formButton{
+                color: rgb(0, 45, 122);
+                font-weight: bold;
+                padding-top: 7px;
+                padding-bottom: 7px;
+                width: 100px;
+            }
+            .btnPretraga{
+                color: rgb(0, 45, 122);
+                font-weight: bold;
+                padding-top: 7px;
+                padding-bottom: 7px;
+                margin-left: 10px;
+                width: 100px;
+            }
+            .forma{
+                display: inline-block;
+                align-items: flex-start;
+            }
+            .labela{
+                display: block;
+                float:left;
+                width: 200px;
+                margin-bottom: 5px;
+            }
+            .labela2{
+                display: block;
+                float:left;
+                width: 300px;
+                margin-bottom: 5px;
+                text-align: left;
+            }
+            .labela3{
+                display: block;
+                float:left;
+                width: 400px;
+                margin-bottom: 5px;
+                text-align: left;
+            }
+            .txtPolje{
+                height: 20px;
+                margin-bottom: 2px;
+            }
+            .newItemButton{
+                width: 200px;
+                height: 40px;
+                color: rgb(0, 45, 122);
+                font-weight: bold;
+                padding: 10px;
+            }
+            
+            .btnDNK{
+               height: 40px;
+                color: rgb(0, 45, 122);
+                font-weight: bold;
+                padding: 10px;
+                width: 200px;
+            }
+       
